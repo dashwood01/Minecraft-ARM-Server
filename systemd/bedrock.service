@@ -1,0 +1,26 @@
+[Unit]
+Description=Minecraft Bedrock Dedicated Server (x86_64 via Box64 on ARM64)
+After=network-online.target
+Wants=network-online.target
+Requires=bedrock.socket
+After=bedrock.socket
+
+[Service]
+Type=simple
+User=@USER@
+# Official server files (user-provided, outside the project repository)
+Environment=BDS_DIR=@BDS_DIR@
+WorkingDirectory=@BDS_DIR@
+ExecStart=@DIR@/scripts/start.sh
+Sockets=bedrock.socket
+StandardInput=socket
+StandardOutput=journal
+StandardError=journal
+# Graceful shutdown: ask BDS to save and stop, then wait for it to exit.
+ExecStop=/bin/sh -c 'echo stop > /run/bedrock/console; while kill -0 $MAINPID 2>/dev/null; do sleep 1; done'
+TimeoutStopSec=120
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

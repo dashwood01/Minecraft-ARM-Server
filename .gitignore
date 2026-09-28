@@ -1,0 +1,62 @@
+# Safety net only. The official Minecraft Bedrock Dedicated Server lives
+# OUTSIDE this repository (BDS_DIR, e.g. ~/minecraft-bedrock-server) and must
+# never be copied in. These patterns catch accidents.
+
+# --- Official BDS files (Microsoft/Mojang, proprietary) ---
+bedrock_server
+bedrock_server_how_to.html
+release-notes.txt
+Dedicated_Server.txt
+server.properties
+server*.properties
+allowlist.json
+permissions.json
+packetlimitconfig.json
+profanity_filter.wlist
+/behavior_packs/
+/resource_packs/
+/definitions/
+/development_behavior_packs/
+/development_resource_packs/
+/development_skin_packs/
+/world_templates/
+/premium_cache/
+/treatments/
+/minecraftpe/
+/config/default/
+/data/bootstrap.json
+bedrock-server-*.zip
+*.mcpack
+*.mcaddon
+*.mcworld
+*.mctemplate
+
+# --- Worlds, LevelDB and player data ---
+worlds/
+world/
+world_*/
+level.dat
+level.dat_old
+levelname.txt
+*.ldb
+MANIFEST-*
+
+# --- Runtime data, logs, caches, backups ---
+.box64-cache/
+*.log
+crash-reports/
+backups/
+*.zip
+*.tar.gz
+*.tgz
+*.bak
+*.bak.*
+
+# --- Secrets ---
+.env
+.env.*
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+credentials*
